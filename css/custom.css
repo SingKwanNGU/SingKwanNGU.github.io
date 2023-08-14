@@ -22,7 +22,7 @@ h1#site-title {
 }
  /* 预加载图片#*/
 .loading-img {
-  background: url(https://github.com/SingKwanNGU/imageRepository/blob/main/image/avatarkafka.png?raw=true) no-repeat center center;
+  background: url(https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/avatarkafka.png) no-repeat center center;
   background-size: cover;
 }
 
@@ -194,7 +194,7 @@ div#category {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #3b70fc;
+  background-color: #6c99dd;
   border-radius: 2em;
 }
 
@@ -377,3 +377,4 @@ div#category {
 #article-container figure.highlight {
   border-radius: 10px;
 }
+
