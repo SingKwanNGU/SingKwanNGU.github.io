@@ -2,7 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/artitalk/index.html</loc>
+    <loc>http://singkwanngu.link/posts/219271.html</loc>
+    
+    <lastmod>2023-08-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/posts/bcafbad3.html</loc>
+    
+    <lastmod>2023-08-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/posts/144a9ecb.html</loc>
+    
+    <lastmod>2023-08-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/posts/52a6424c.html</loc>
+    
+    <lastmod>2023-08-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/posts/73df7d67.html</loc>
+    
+    <lastmod>2023-08-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/posts/88ec0c1d.html</loc>
+    
+    <lastmod>2023-08-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/posts/f6491cfb.html</loc>
+    
+    <lastmod>2023-08-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/posts/53d0684b.html</loc>
+    
+    <lastmod>2023-08-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/artitalk/index.html</loc>
     
     <lastmod>2023-08-14</lastmod>
     
@@ -11,7 +83,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
+    <loc>http://singkwanngu.link/about/index.html</loc>
     
     <lastmod>2023-08-14</lastmod>
     
@@ -20,7 +92,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/music/index.html</loc>
+    <loc>http://singkwanngu.link/music/index.html</loc>
     
     <lastmod>2023-08-13</lastmod>
     
@@ -29,7 +101,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/posts/8fe47ff4.html</loc>
+    <loc>http://singkwanngu.link/posts/8fe47ff4.html</loc>
     
     <lastmod>2023-08-13</lastmod>
     
@@ -38,7 +110,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/posts/824ac3d0.html</loc>
+    <loc>http://singkwanngu.link/posts/824ac3d0.html</loc>
     
     <lastmod>2023-08-13</lastmod>
     
@@ -47,7 +119,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/posts/8049be4c.html</loc>
+    <loc>http://singkwanngu.link/posts/8049be4c.html</loc>
     
     <lastmod>2023-08-13</lastmod>
     
@@ -56,7 +128,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/posts/29bd9dfc.html</loc>
+    <loc>http://singkwanngu.link/posts/29bd9dfc.html</loc>
     
     <lastmod>2023-08-13</lastmod>
     
@@ -65,7 +137,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/posts/d931075b.html</loc>
+    <loc>http://singkwanngu.link/posts/d931075b.html</loc>
     
     <lastmod>2023-08-13</lastmod>
     
@@ -74,7 +146,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/posts/c83102ca.html</loc>
+    <loc>http://singkwanngu.link/posts/c83102ca.html</loc>
     
     <lastmod>2023-08-13</lastmod>
     
@@ -83,7 +155,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/index.html</loc>
+    <loc>http://singkwanngu.link/categories/index.html</loc>
     
     <lastmod>2023-08-06</lastmod>
     
@@ -92,7 +164,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/link/index.html</loc>
+    <loc>http://singkwanngu.link/link/index.html</loc>
     
     <lastmod>2023-08-06</lastmod>
     
@@ -101,7 +173,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/index.html</loc>
+    <loc>http://singkwanngu.link/tags/index.html</loc>
     
     <lastmod>2023-08-06</lastmod>
     
@@ -111,58 +183,114 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
-    <lastmod>2023-08-17</lastmod>
+    <loc>http://singkwanngu.link/</loc>
+    <lastmod>2023-08-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://example.com/tags/jdbc/</loc>
-    <lastmod>2023-08-17</lastmod>
+    <loc>http://singkwanngu.link/tags/jdbc/</loc>
+    <lastmod>2023-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/mybatis/</loc>
-    <lastmod>2023-08-17</lastmod>
+    <loc>http://singkwanngu.link/tags/Linux/</loc>
+    <lastmod>2023-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/spring/</loc>
-    <lastmod>2023-08-17</lastmod>
+    <loc>http://singkwanngu.link/tags/mybatis/</loc>
+    <lastmod>2023-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/springmvc/</loc>
-    <lastmod>2023-08-17</lastmod>
+    <loc>http://singkwanngu.link/tags/spring/</loc>
+    <lastmod>2023-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/java/</loc>
-    <lastmod>2023-08-17</lastmod>
+    <loc>http://singkwanngu.link/tags/springmvc/</loc>
+    <lastmod>2023-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/springboot/</loc>
-    <lastmod>2023-08-17</lastmod>
+    <loc>http://singkwanngu.link/tags/web/</loc>
+    <lastmod>2023-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/web/</loc>
-    <lastmod>2023-08-17</lastmod>
+    <loc>http://singkwanngu.link/tags/java/</loc>
+    <lastmod>2023-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/tags/network/</loc>
+    <lastmod>2023-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/tags/springboot/</loc>
+    <lastmod>2023-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/tags/DNS/</loc>
+    <lastmod>2023-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/tags/CDN/</loc>
+    <lastmod>2023-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/tags/DDoS/</loc>
+    <lastmod>2023-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/tags/RDMA/</loc>
+    <lastmod>2023-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/tags/VPN/</loc>
+    <lastmod>2023-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/tags/NAT/</loc>
+    <lastmod>2023-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -170,8 +298,22 @@
 
   
   <url>
-    <loc>http://example.com/categories/java/</loc>
-    <lastmod>2023-08-17</lastmod>
+    <loc>http://singkwanngu.link/categories/java/</loc>
+    <lastmod>2023-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/categories/Linux/</loc>
+    <lastmod>2023-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://singkwanngu.link/categories/network/</loc>
+    <lastmod>2023-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

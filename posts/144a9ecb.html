@@ -1,0 +1,496 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DNS | 淡中得味的小破站</title><meta name="author" content="SingKwan"><meta name="copyright" content="SingKwan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="DNS域名解析过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DNS">
+<meta property="og:url" content="http://singkwanngu.link/posts/144a9ecb.html">
+<meta property="og:site_name" content="淡中得味的小破站">
+<meta property="og:description" content="DNS域名解析过程">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf6.png">
+<meta property="article:published_time" content="2023-08-19T16:14:13.000Z">
+<meta property="article:modified_time" content="2023-08-20T11:03:44.697Z">
+<meta property="article:author" content="SingKwan">
+<meta property="article:tag" content="network">
+<meta property="article:tag" content="DNS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf6.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://singkwanngu.link/posts/144a9ecb.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'DNS',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-20 19:03:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/mainColor/heoMainColor.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/poem.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/css/runtime/runtime.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="an_music_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/silverWolf.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/bangumis/index.html"><i class="fa-fw fas fa-home"></i><span> 追番</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><span> Artitalk</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf6.png')"><nav id="nav"><span id="blog-info"><a href="/" title="淡中得味的小破站"><span class="site-name">淡中得味的小破站</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/bangumis/index.html"><i class="fa-fw fas fa-home"></i><span> 追番</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><span> Artitalk</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">DNS</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-08-19T16:14:13.000Z" title="Created 2023-08-20 00:14:13">2023-08-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-08-20T11:03:44.697Z" title="Updated 2023-08-20 19:03:44">2023-08-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/network/">network</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="DNS"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>参考视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1uL4y1B7aE/?spm_id_from=333.999.0.0&vd_source=f242f681c7b75232ac749b73552a2012">https://www.bilibili.com/video/BV1uL4y1B7aE/?spm_id_from=333.999.0.0&amp;vd_source=f242f681c7b75232ac749b73552a2012</a></p>
+<h1 id="DNS产生的原因和来由"><a href="#DNS产生的原因和来由" class="headerlink" title="DNS产生的原因和来由"></a>DNS产生的原因和来由</h1><p>TCP&#x2F;IP 是基于 IP 地址进行通信的，但是 IP 地址不太好记。于是出现了另一种方便记忆的标识符，那就是主机名。为计算机配置主机名，在进行网络通信时，直接使用主机名，而不用输入一大串的 IP 地址。同时，系统通过一个叫 hosts 的文件，实现主机名转换 IP 地址的功能。hosts 文件包括主机名和 IP 地址的对应关系。当需要通过主机名访问主机时，它就会查看本地的 hosts 文件，从文件中找到相对应的 IP 地址，然后进行报文发送。如果在 hosts 文件中没找到相关信息，则主机访问失败。hosts 文件是主机的本地文件，优点是查找响应速度快。它主要用来存储一些本地网络的主机名和 IP 地址的对应信息。这样，主机在以主机名访问本地网络主机时，通过 hosts 文件可以迅速获得相应的 IP 地址。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/1.png" alt="Alt text"><br>每台主机的 hosts 文件都需要单独手工更新。随着网络规模的不断扩大、接入计算机的数量不断增加，维护难度越来越大，每台主机同步更新，几乎是一件不可能完成的任务。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/2.png" alt="Alt text"><br>为了解决 hosts 文件维护困难的问题，出现了 DNS 域名系统，一个可以解决主机名和 IP 地址互相转换的系统。无论网络规模变得多么庞大，都能在一个小范围内通过 DNS 进行管理。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/3.png" alt="Alt text"></p>
+<h1 id="DNS（Domain-Name-System，域名系统）"><a href="#DNS（Domain-Name-System，域名系统）" class="headerlink" title="DNS（Domain Name System，域名系统）"></a>DNS（Domain Name System，域名系统）</h1><h2 id="DNS-，全称-Domain-Name-System-。采用-client-server-模式，DNS-client-发出查询请求，DNS-server-响应请求。DNS-client-通过查询-DNS-server-获得主机的-IP-地址，进而完成后续的-TCP-IP-通信过程。"><a href="#DNS-，全称-Domain-Name-System-。采用-client-server-模式，DNS-client-发出查询请求，DNS-server-响应请求。DNS-client-通过查询-DNS-server-获得主机的-IP-地址，进而完成后续的-TCP-IP-通信过程。" class="headerlink" title="DNS ，全称 Domain Name System 。采用 client&#x2F;server 模式，DNS client 发出查询请求，DNS server 响应请求。DNS client 通过查询 DNS server 获得主机的 IP 地址，进而完成后续的 TCP&#x2F;IP 通信过程。"></a>DNS ，全称 Domain Name System 。采用 client&#x2F;server 模式，DNS client 发出查询请求，DNS server 响应请求。DNS client 通过查询 DNS server 获得主机的 IP 地址，进而完成后续的 TCP&#x2F;IP 通信过程。</h2><p>DNS协议运行在UDP协议之上，使用端口号53。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/4.png" alt="Alt text"></p>
+<p>当 Windows 系统用户使用 nslookup hostname&#x2F;domainname 命令时，DNS 会自动查找注册了主机名和 IP 地址的数据库，并返回对应的 IP 地址。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/5.png" alt="Alt text"></p>
+<h2 id="DNS-域名"><a href="#DNS-域名" class="headerlink" title="DNS 域名"></a>DNS 域名</h2><p>先了解什么是域名，才能理解 DNS 。域名是为了识别主机名或机构的一种分层的名称。因为单独的一台域名服务器是不可能知道所有域名信息，所以域名系统是一个分布式数据库系统，域名（主机名）到 IP 地址的解析可以由若干个域名服务器共同完成。每一个站点维护自己的信息数据库，并运行一个服务器程序供互联网上的客户端查询。DNS 提供了客户端与服务器的通信协议，也提供了服务器之间交换信息的协议。由于是分布式系统，即使单个服务器出现故障，也不会导致整个系统失效，消除了单点故障。</p>
+<h2 id="DNS-域名组成"><a href="#DNS-域名组成" class="headerlink" title="DNS 域名组成"></a>DNS 域名组成</h2><p>DNS 域的本质是一种管理范围的划分，最大的域是根域，向下可以划分为顶级域、二级域、三级域、四级域等。相对应的域名是根域名、顶级域名、二级域名、三级域名等。不同等级的域名使用点号分隔，级别最低的域名写在最左边，而级别最高的域名写在最右边。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/6.png" alt="Alt text"><br>举个栗子：网站域名 <a target="_blank" rel="noopener" href="http://www.tsinghua.edu.cn/">http://www.tsinghua.edu.cn</a> 中，从右到左开始，cn 是顶级域名，代表中国，edu是二级域名，代表教育机构，tsinghua 是三级域名，表示清华大学，www 则表示三级域名中的主机，并提供了 web 服务。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/7.png" alt="Alt text"><br>除了 www 主机外，常见的主机还有 arch 、sem 、mail ，域名如下：<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/8.png" alt="Alt text"></p>
+<p>每一级的域名都由英文字母和数字组成，域名不区分大小写，长度不能超过 63 字节，一个完整的域名不能超过 255 个字节。根域名用 “ . ”（点）表示。目前我们看到的域名例子都是完全合格域名（ FQDN ），FQDN 的完整格式是以点结尾的域名。接入互联网的主机、服务器或其它网络设备都可以拥有一个唯一的 FQDN 。与 FQDN 对应的，系统中的默认域名是非合格域名，会把当前的区域域名添加到尾部。例如，tsinghua 域内的主机上查找 mail ，本地解析器就会将这个名称转换为 FQDN ，即 <a target="_blank" rel="noopener" href="http://mail.tsinghua.edu.cn/">http://mail.tsinghua.edu.cn</a> ，然后解析出 IP 地址。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/9.png" alt="Alt text"></p>
+<h2 id="DNS-域名空间"><a href="#DNS-域名空间" class="headerlink" title="DNS 域名空间"></a>DNS 域名空间</h2><p>域名空间结构像是一棵倒过来的树，也叫做树形结构。根域名就是树根（ root ），用点号表示，往下是这棵树的各层枝叶。根域名的下一层叫顶级域名，顶级域名包括三大类：<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/10.png" alt="Alt text"></p>
+<ul>
+<li><p>国家顶级域名<br>国家顶级域名采用 ISO3166 的规定。比如：.cn 表示中国，.us 表示美国，.uk表示英国等。现在使用的国家顶级域名大约在 200个左右。</p>
+</li>
+<li><p>国际顶级域名<br>国际顶级域名采用 .int 。国际性的组织可以在 .int 下注册。</p>
+</li>
+<li><p>通用顶级域名<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/12.png" alt="Alt text"></p>
+</li>
+</ul>
+<p>顶级域名下面是二级域名。国家顶级域名下注册的二级域名均由国家自行确定。我国二级域名分为类别域名和行政域名两大类，类别域名如：.com ，.edu ，.gov 等分别代表不同的机构；行政域名如：.bj 表示北京，.sh 表示上海，代表我国各省、自治区及直辖市等。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/13.png" alt="Alt text"></p>
+<p>二级域名下面是三级域名、四级域名等。命名树上任何一个节点的域名就是从这个节点到最高层的域名串起来，中间以 “ . ” 分隔。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/14.png" alt="Alt text"></p>
+<p>在域名结构中，节点在所属域中的主机名标识可以相同，但是域名必须不同。比如：清华大学和新浪公司下都有一台主机的标识是 mail ，但是两者的域名却是不同的，前者为 <a target="_blank" rel="noopener" href="http://mail.tsinghua.edu.cn/">http://mail.tsinghua.edu.cn</a> ，而后者为 <a target="_blank" rel="noopener" href="http://mail.sina.com.cn/">http://mail.sina.com.cn</a> 。</p>
+<h1 id="DNS-域名解析"><a href="#DNS-域名解析" class="headerlink" title="DNS 域名解析"></a>DNS 域名解析</h1><p>将域名转换为对应的 IP 地址的过程叫做域名解析。在域名解析过程中，DNS client 的主机调用解析器（ Resolver ），向 DNS server 发出请求，DNS server 完成域名解析。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/15.png" alt="Alt text"></p>
+<p>域名解析是按照 DNS 分层结构的特点，自顶向下进行的。但是如果每一个域名解析都从根域名服务器开始，那么根域名服务器有可能无法承载海量的流量。在实际应用中，大多数域名解析都是在本地域名服务器完成。通过合理设置本地域名服务器，由本地域名服务器负责大部分的域名解析请求，提高域名解析效率。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/16.png" alt="Alt text"></p>
+<h2 id="DNS-解析器"><a href="#DNS-解析器" class="headerlink" title="DNS 解析器"></a>DNS 解析器</h2><p>从应用程序的角度看，访问 DNS 是通过一个叫解析器（ Resolver ）的应用程序来完成的。发送一个 TCP 或 UDP 数据包之前，解析器必须将域名（主机名）转换为 IP 地址。一个解析器至少要注册一个域名服务器的 IP 地址。通常，它至少包括本地域名服务器的 IP 地址。</p>
+<h2 id="DNS-域名服务器"><a href="#DNS-域名服务器" class="headerlink" title="DNS 域名服务器"></a>DNS 域名服务器</h2><p>DNS 域名空间的层次结构，允许不同的域名服务器管理域名空间的不同部分。域名服务器是指管理域名的主机及软件，它可以管理所在分层的域。其所管理的分层叫做区域（ zone ）。一个 zone 是 DNS 域名空间的一棵子树，它可以单独管理而不受其它 zone 影响。每层都设有一个域名服务器。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/17.png" alt="Alt text"></p>
+<p>根所设置的 DNS 叫做根域名服务器，它对 DNS 的检索数据功能起着至关重要的作用。根域名服务器中注册了顶级域名服务器的 IP 地址。如果想要新增一个一级域名，或者修改已有的顶级域名，就要在根域名服务器中进行新增或变更。</p>
+<p>类似的，顶级域名服务器中注册了二级域名服务器的 IP 地址。如果域名服务器下面没有其它分层，就可以自由地指定主机名称。如果想重新设置域名服务器的 IP 地址或修改域名，必须在上一层的域名服务器中进行修改。</p>
+<p>域名和域名服务器都需要按照分层进行设置。如果域名服务器出现故障，那么针对这个域的 DNS 查询就无法正常工作。因此，为了提高可用性，至少设置两台域名服务器。一旦第一台域名服务器无法提供查询时，就会自动转到第二个甚至第三个域名服务器上进行。</p>
+<h2 id="DNS-域名服务器类型"><a href="#DNS-域名服务器类型" class="headerlink" title="DNS 域名服务器类型"></a>DNS 域名服务器类型</h2><ul>
+<li><p>本地域名服务器<br>互联网接入服务运营商或者一个大的网络机构，像公司、大学等都有一台或多台可以自行管理的域名服务器，这类域名服务器称为本地域名服务器，也称为默认域名服务器。本地域名服务器离客户端较近。当一个 DNS客户端发出 DNS 查询时，首先送到本地域名服务器。如果本地域名服务器数据库中有对应的域名信息，会将查询的域名转换为 IP 地址返回客户端。如果没有，它会以 DNS 客户端的身份向根域名服务器进行查询。根域名服务器收到本地域名服务器的查询后，会返回相关域名服务器的 IP 地址，本地域名服务器再向相关域名服务器发送查询请求。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/18.png" alt="Alt text"></p>
+</li>
+<li><p>根域名服务器<br>通常根域名服务器用来管理顶级域，本身并不对域名进行解析，但它知道相关域名服务器的 IP 地址。IPv4 根域名服务器全球有 13 台，主机名分别为 A ~ M 。1 台为主根服务器在美国，其余 12 个均为辅根服务器，其中 9 个在美国，2 个在欧洲，位于英国和瑞典，1 台在亚洲，位于日本。所有的域名服务器都必须注册根域名服务器的 IP 地址，因为 DNS 根据 IP 地址进行检索时，需要按顺序从根域名服务器开始。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/19.png" alt="Alt text"></p>
+</li>
+<li><p>授权域名服务器<br>互联网上的主机在域名服务器上进行注册，这个域名服务器就是主机的授权域名服务器。通常，主机的授权域名服务器就是本地域名服务器。实际上，主机会有两个授权域名服务器，防止单点故障。授权域名服务器上有注册主机域名与 IP 地址的映射信息，当查询注册主机域名时，它会返回相应主机的 IP 地址。如果主机域名和 IP 地址需要进行变更，只需要在授权域名服务器处理即可，不用再向其它域名服务器进行申请或报告。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/20.png" alt="Alt text"></p>
+</li>
+<li><p>主域名服务器<br>主域名服务器是完成一个或多个区域域名解析工作的主要域名服务器，通常也是一个或多个区域的授权域名服务器。主域名服务器有区域内主机地址信息的源数据文件，并且是区域传送中区域数据的唯一来源。</p>
+</li>
+<li><p>辅助域名服务器<br>辅助域名服务器可以协助主域名服务器提供域名查询服务，在主机很多的情况下，可以有效分担主域名服务器的压力。辅助域名服务器也有冗余功能，当主域名服务器故障时，辅助域名服务器能够在数据有效期内继续为主机提供域名解析服务。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/21.png" alt="Alt text"></p>
+</li>
+</ul>
+<p>一台主域名服务器可以有多台辅助域名服务器，一台辅助域名服务器也可以是其它区域的主域名服务器。辅助域名服务器中包含区域内主机地址数据的授权信息，通过区域配置文件副本的方式存储。辅助域名服务器也是区域的授权域名服务器，可以完成本区域内域名查询的授权回答。</p>
+<p>辅助域名服务器并不建立数据文件，它获得区域数据的唯一途径就是通过区域传送的方式，从主域名服务器上获得区域数据的最新副本。获得数据副本的方式有两种，第一种是辅助域名服务器定期主动获得主域名服务器的副本，或更新副本中的数据。第二种是主域名服务器在区域数据发生变化时，及时通知辅助域名服务器更新副本中的数据。</p>
+<h1 id="DNS-域名完整解析过程"><a href="#DNS-域名完整解析过程" class="headerlink" title="DNS 域名完整解析过程"></a>DNS 域名完整解析过程</h1><p>除了在本地域名服务器有记录或者hosts文件有记录，正常来说域名解析一般都是从根域名服务器开始，自顶向下。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/22.png" alt="Alt text"><br>DNS 客户端进行域名 tsinghua.edu.cn 的解析过程如下：<br>1.DNS 客户端向本地域名服务器发送请求，查询 tsinghua.edu.cn 主机的 IP 地址；<br>2.本地域名服务器查询数据库，发现没有域名为 tsinghua.edu.cn 的主机，于是将请求发送给根域名服务器；<br>3.根域名服务器查询数据库，发现没有这个主机域名记录，但是根域名服务器知道 cn 域名服务器可以解析这个域名，于是将 cn 域名服务器的 IP 地址返回给本地域名服务器；<br>4.本地域名服务器向 cn 域名服务器查询 tsinghua.edu.cn 主机的 IP 地址；<br>5.cn 域名服务器查询数据库，也没有相关记录，但是知道 edu.cn 域名服务器可以解析这个域名，于是将 edu.cn 域名服务器的 IP 地址返回给本地域名服务器；<br>6.本地域名服务器再向 edu.cn 域名服务器查询 &#x2F;<a target="_blank" rel="noopener" href="http://www.tsinghua.edu.cn/">www.tsinghua.edu.cn</a> 主机 IP 地址；<br>7.edu.cn 域名服务器查询数据库，也没有相关记录，但是知道 tsinghua.edu.cn 域名服务器可以解析这个域名，于是将 tsinghua.edu.cn 的域名服务器 IP 地址返回给本地域名服务器；<br>8.本地域名服务器向 tsinghua.edu.cn 域名服务器查询 <a target="_blank" rel="noopener" href="http://www.tsinghua.edu.cn/">www.tsinghua.edu.cn</a> 主机的 IP 地址；<br>9.tsinghua.edu.cn 域名服务器查询数据库，发现有主机域名记录，于是给本地域名服务器返回 tsinghua.edu.cn 对应的 IP 地址；<br>10.最后本地域名服务器将 tsinghua.edu.cn 的 IP 地址返回给客户端，整个解析过程完成。</p>
+<h1 id="DNS-传输层协议"><a href="#DNS-传输层协议" class="headerlink" title="DNS 传输层协议"></a>DNS 传输层协议</h1><p>DNS 域名服务器使用的端口号是 53 ，并且同时支持 UDP 和 TCP 协议。为什么同时使用两种协议呢？因为 DNS 响应报文中有一个删减标志位，用 TC 表示。当响应报文使用 UDP 封装，且报文长度大于 512 字节时，那么服务器只返回前 512 字节，同时 TC 标志位置位，表示报文进行了删减。当客户端收到 TC 置位的响应报文后，将采用 TCP 封装查询请求。DNS 服务器返回的响应报文长度大于 512 字节。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/23.png" alt="Alt text"><br>UDP 报文的最大长度是 512 字节，最多可以包含 13 台根域名服务器数据，因此 ipv4 根域名服务器只能限制在 13 个，且每个服务器使用单个字母命名，也是 IPv4 根服务器是从 A ~ M 命名的原因。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/24.png" alt="Alt text"><br>当辅助域名服务器启动时，将从主域名服务器执行区域传送。正常运行过程中，辅助域名服务器也会定时向主域名服务器进行查询，以便了解主域名服务器数据是否发送变化。如果有变化，将执行一次区域传送。因为区域传送的数据多，所以传送的数据采用 TCP 封装。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/25.png" alt="Alt text"><br>因此，UDP 用于 client 和 server 的查询和响应，TCP 用于主从 server 之间的传送。</p>
+<h1 id="DNS-查询方式"><a href="#DNS-查询方式" class="headerlink" title="DNS 查询方式"></a>DNS 查询方式</h1><p>DNS 域名解析包括两种查询（ query ）方式，一种是递归查询，另一种是迭代查询。</p>
+<h2 id="递归查询DNS-服务器如果不能直接响应解析请求，它将继续请求其它的-DNS-服务器，直到查询域名解析的结果。查询的结果可以是域名主机的-IP-地址，或者是域名无法解析。无论哪种结果，DNS-服务器都会将结果返回给客户端。"><a href="#递归查询DNS-服务器如果不能直接响应解析请求，它将继续请求其它的-DNS-服务器，直到查询域名解析的结果。查询的结果可以是域名主机的-IP-地址，或者是域名无法解析。无论哪种结果，DNS-服务器都会将结果返回给客户端。" class="headerlink" title="递归查询DNS 服务器如果不能直接响应解析请求，它将继续请求其它的 DNS 服务器，直到查询域名解析的结果。查询的结果可以是域名主机的 IP 地址，或者是域名无法解析。无论哪种结果，DNS 服务器都会将结果返回给客户端。"></a>递归查询DNS 服务器如果不能直接响应解析请求，它将继续请求其它的 DNS 服务器，直到查询域名解析的结果。查询的结果可以是域名主机的 IP 地址，或者是域名无法解析。无论哪种结果，DNS 服务器都会将结果返回给客户端。</h2><p>举个栗子：当本地域名服务器接收了客户端的查询请求，本地域名服务器将代表客户端来找答案，而在本地域名服务器执行工作时，客户端只是等待，直到本地域名服务器将最终查询结果返回客户端。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/26.png" alt="Alt text"></p>
+<h1 id="迭代查询"><a href="#迭代查询" class="headerlink" title="迭代查询"></a>迭代查询</h1><p>如果 DNS 服务器查不到相应记录，会向客户端返回一个可能知道结果的域名服务器 IP 地址，由客户端继续向新的服务器发送查询请求。对域名服务器的迭代查询，只得到一个提示，则继续查询。<br>举个栗子：本地域名服务器发送请求到根域名服务器，根域名服务器并没有相应记录，它只是给本地域名服务器返回一个提示，引导本地域名服务器到另一台域名服务器进行查询。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/27.png" alt="Alt text"><br>客户端在查询 IP 地址时，向本地域名服务器进行递归查询。如果本地域名服务器的数据库有相应数据，则直接返回相应数据。如果没有，则本地域名服务器向根域名服务器进行迭代查询。从根开始对这棵树按照顺序进行遍历，直到找到指定的域名服务器，并由这个域名服务器返回相应的数据。客户端和本地域名服务器会将收到的信息保存在缓存里，这样可以减少每次查询时的性能消耗。</p>
+<h1 id="DNS-反向查询"><a href="#DNS-反向查询" class="headerlink" title="DNS 反向查询"></a>DNS 反向查询</h1><p>在 DNS 查询中，客户端希望知道域名对应的 IP 地址，这种查询称为正向查询。大部分的 DNS 查询都是正向查询。与正向查询对应的，是反向查询。它允许 DNS 客户端通过 IP 地址查找对应的域名。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/28.png" alt="Alt text"><br>为实现反向查询，在 DNS 标准中定义了特色域 in-addr.arpa 域，并保留在域名空间中，以便执行反向查询。为创建反向域名空间，in-addr.arpa 域中的子域是按照 IP 地址相反的顺序构造的。</p>
+<p>举个栗子：<a target="_blank" rel="noopener" href="http://www.tsinghua.edu.cn/">http://www.tsinghua.edu.cn</a> 的 IP 地址是 166.111.4.100 ，那么在 in-addr.arpa 域中对应的节点就是 100.4.111.166 。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/29.png" alt="Alt text"></p>
+<h1 id="DNS-应用场景"><a href="#DNS-应用场景" class="headerlink" title="DNS 应用场景"></a>DNS 应用场景</h1><h2 id="静态域名解析"><a href="#静态域名解析" class="headerlink" title="静态域名解析"></a>静态域名解析</h2><p>域名解析分为动态域名解析和静态域名解析。在解析域名时，首先采用静态域名解析，如果静态解析不成功，再采用动态域名解析。</p>
+<p>静态域名解析是通过静态域名解析表进行的，手动建立域名和 IP 地址之间的对应关系表，该表的作用类似于 Windows 操作系统下的 hosts 文件，可以将一些常用的域名放入表中。当 DNS client 需要域名所对应的 IP 地址时，即到静态域名解析表中去查找指定的域名，从而获得所对应的 IP 地址，提高域名解析的效率。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/30.png" alt="Alt text"></p>
+<h2 id="动态域名解析"><a href="#动态域名解析" class="headerlink" title="动态域名解析"></a>动态域名解析</h2><p>动态域名解析需要专用的域名服务器（ DNS server ）运行域名解析服务器程序，提供从域名到 IP 地址的映射关系，负责接收客户端（ DNS client）提出的域名解析请求。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/31.png" alt="Alt text"></p>
+<h1 id="DNS-代理"><a href="#DNS-代理" class="headerlink" title="DNS 代理"></a>DNS 代理</h1><p>在使用了 DNS 代理（ DNS proxy ）功能的组网中，DNS client 将 DNS 请求报文直接发送给 DNS proxy 。DNS proxy 会先查找本地域名解析表，如果未查询到对应的解析表项，会将 DNS 请求报文转发给 DNS Server ，并在收到 DNS server 的应答报文后将其返回给 DNS client ，从而实现域名解析。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/posts/144a9ecb/32.png" alt="Alt text"><br>因此，当 DNS server 的地址发生变化时，只需改变 DNS proxy 上的配置，无需逐一改变局域网内每个 DNS client 的配置，从而简化了网络管理。</p>
+<p>作者：网工Fox<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23042131/answer/2051992590">https://www.zhihu.com/question/23042131/answer/2051992590</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://singkwanngu.link">SingKwan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://singkwanngu.link/posts/144a9ecb.html">http://singkwanngu.link/posts/144a9ecb.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/network/">network</a><a class="post-meta__tags" href="/tags/DNS/">DNS</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf6.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><link rel="stylesheet" href="/css/coin/coin.css" media="defer" onload="this.media='all'"/><div class="post-reward"><button class="tip-button reward-button"><span class="tip-button__text">treat or trick</span><div class="coin-wrapper"><div class="coin"><div class="coin__middle"></div><div class="coin__back"></div><div class="coin__front"></div></div></div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository@main/image/d09ef1bfcbe9077606daa827572bdfb.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository@main/image/d09ef1bfcbe9077606daa827572bdfb.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></button></div><audio id="coinAudio" src="https://cdn.cbd.int/akilar-candyassets@1.0.36/audio/aowu.m4a"></audio><script defer="defer" src="/js/coin/coin.js"></script><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/88ec0c1d.html" title="CDN"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf7.png" onerror="onerror=null;src='/img/kafka&amp;silverWolf.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">CDN</div></div></a></div><div class="next-post pull-right"><a href="/posts/53d0684b.html" title="Linux"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/kafka9.png" onerror="onerror=null;src='/img/kafka&amp;silverWolf.png'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Linux</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/posts/f6491cfb.html" title="网络编程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/kafka12.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-17</div><div class="title">网络编程</div></div></a></div><div><a href="/posts/88ec0c1d.html" title="CDN"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-20</div><div class="title">CDN</div></div></a></div><div><a href="/posts/52a6424c.html" title="DDoS"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf12.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-20</div><div class="title">DDoS</div></div></a></div><div><a href="/posts/73df7d67.html" title="RDMA"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf13.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-20</div><div class="title">RDMA</div></div></a></div><div><a href="/posts/bcafbad3.html" title="VPN"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf10.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-20</div><div class="title">VPN</div></div></a></div><div><a href="/posts/219271.html" title="NAT"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf14.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-20</div><div class="title">NAT</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/silverWolf.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">SingKwan</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/SingKwanNGU"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/SingKwanNGU" target="_blank" title="Github"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-github"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=287202298@qq.com" target="_blank" title="Email"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangsufeng_youxiang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/13938659" target="_blank" title="BiliBili"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili2"></use></svg></a><a class="social-icon faa-parent animated-hover" href="tencent://Message/?Uin=287202298&amp;amp;websiteName=local.edu.com:8888=&amp;amp;Menu=yes" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ"></use></svg></a></div></div><div class="card-widget" id="card-poem"><div id="poem_sentence"></div><div id="poem_info"><div id="poem_dynasty"></div><div id="poem_author"></div></div></div><script src="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/jinrishici.js" charset="utf-8"></script><script type="text/javascript">jinrishici.load(function(result) {
+var sentence = document.querySelector("#poem_sentence")
+var author = document.querySelector("#poem_author")
+var dynasty = document.querySelector("#poem_dynasty")
+
+var sentenceText = result.data.content
+sentenceText = sentenceText.substr(0, sentenceText.length - 1);
+sentence.innerHTML = sentenceText
+dynasty.innerHTML = result.data.origin.dynasty
+author.innerHTML = result.data.origin.author + '《' + result.data.origin.title + '》'
+});</script><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS%E4%BA%A7%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0%E5%92%8C%E6%9D%A5%E7%94%B1"><span class="toc-number">1.</span> <span class="toc-text">DNS产生的原因和来由</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS%EF%BC%88Domain-Name-System%EF%BC%8C%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">DNS（Domain Name System，域名系统）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-%EF%BC%8C%E5%85%A8%E7%A7%B0-Domain-Name-System-%E3%80%82%E9%87%87%E7%94%A8-client-server-%E6%A8%A1%E5%BC%8F%EF%BC%8CDNS-client-%E5%8F%91%E5%87%BA%E6%9F%A5%E8%AF%A2%E8%AF%B7%E6%B1%82%EF%BC%8CDNS-server-%E5%93%8D%E5%BA%94%E8%AF%B7%E6%B1%82%E3%80%82DNS-client-%E9%80%9A%E8%BF%87%E6%9F%A5%E8%AF%A2-DNS-server-%E8%8E%B7%E5%BE%97%E4%B8%BB%E6%9C%BA%E7%9A%84-IP-%E5%9C%B0%E5%9D%80%EF%BC%8C%E8%BF%9B%E8%80%8C%E5%AE%8C%E6%88%90%E5%90%8E%E7%BB%AD%E7%9A%84-TCP-IP-%E9%80%9A%E4%BF%A1%E8%BF%87%E7%A8%8B%E3%80%82"><span class="toc-number">2.1.</span> <span class="toc-text">DNS ，全称 Domain Name System 。采用 client&#x2F;server 模式，DNS client 发出查询请求，DNS server 响应请求。DNS client 通过查询 DNS server 获得主机的 IP 地址，进而完成后续的 TCP&#x2F;IP 通信过程。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-%E5%9F%9F%E5%90%8D"><span class="toc-number">2.2.</span> <span class="toc-text">DNS 域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-%E5%9F%9F%E5%90%8D%E7%BB%84%E6%88%90"><span class="toc-number">2.3.</span> <span class="toc-text">DNS 域名组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-%E5%9F%9F%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-number">2.4.</span> <span class="toc-text">DNS 域名空间</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">DNS 域名解析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-%E8%A7%A3%E6%9E%90%E5%99%A8"><span class="toc-number">3.1.</span> <span class="toc-text">DNS 解析器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">3.2.</span> <span class="toc-text">DNS 域名服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.3.</span> <span class="toc-text">DNS 域名服务器类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS-%E5%9F%9F%E5%90%8D%E5%AE%8C%E6%95%B4%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="toc-number">4.</span> <span class="toc-text">DNS 域名完整解析过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS-%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE"><span class="toc-number">5.</span> <span class="toc-text">DNS 传输层协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS-%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F"><span class="toc-number">6.</span> <span class="toc-text">DNS 查询方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2DNS-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A6%82%E6%9E%9C%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E5%93%8D%E5%BA%94%E8%A7%A3%E6%9E%90%E8%AF%B7%E6%B1%82%EF%BC%8C%E5%AE%83%E5%B0%86%E7%BB%A7%E7%BB%AD%E8%AF%B7%E6%B1%82%E5%85%B6%E5%AE%83%E7%9A%84-DNS-%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E7%9B%B4%E5%88%B0%E6%9F%A5%E8%AF%A2%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9A%84%E7%BB%93%E6%9E%9C%E3%80%82%E6%9F%A5%E8%AF%A2%E7%9A%84%E7%BB%93%E6%9E%9C%E5%8F%AF%E4%BB%A5%E6%98%AF%E5%9F%9F%E5%90%8D%E4%B8%BB%E6%9C%BA%E7%9A%84-IP-%E5%9C%B0%E5%9D%80%EF%BC%8C%E6%88%96%E8%80%85%E6%98%AF%E5%9F%9F%E5%90%8D%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E3%80%82%E6%97%A0%E8%AE%BA%E5%93%AA%E7%A7%8D%E7%BB%93%E6%9E%9C%EF%BC%8CDNS-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%BD%E4%BC%9A%E5%B0%86%E7%BB%93%E6%9E%9C%E8%BF%94%E5%9B%9E%E7%BB%99%E5%AE%A2%E6%88%B7%E7%AB%AF%E3%80%82"><span class="toc-number">6.1.</span> <span class="toc-text">递归查询DNS 服务器如果不能直接响应解析请求，它将继续请求其它的 DNS 服务器，直到查询域名解析的结果。查询的结果可以是域名主机的 IP 地址，或者是域名无法解析。无论哪种结果，DNS 服务器都会将结果返回给客户端。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E6%9F%A5%E8%AF%A2"><span class="toc-number">7.</span> <span class="toc-text">迭代查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS-%E5%8F%8D%E5%90%91%E6%9F%A5%E8%AF%A2"><span class="toc-number">8.</span> <span class="toc-text">DNS 反向查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">9.</span> <span class="toc-text">DNS 应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-number">9.1.</span> <span class="toc-text">静态域名解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-number">9.2.</span> <span class="toc-text">动态域名解析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS-%E4%BB%A3%E7%90%86"><span class="toc-number">10.</span> <span class="toc-text">DNS 代理</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/73df7d67.html" title="RDMA"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf13.png" onerror="this.onerror=null;this.src='/img/kafka&amp;silverWolf.png'" alt="RDMA"/></a><div class="content"><a class="title" href="/posts/73df7d67.html" title="RDMA">RDMA</a><time datetime="2023-08-19T16:37:53.000Z" title="Created 2023-08-20 00:37:53">2023-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/219271.html" title="NAT"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf14.png" onerror="this.onerror=null;this.src='/img/kafka&amp;silverWolf.png'" alt="NAT"/></a><div class="content"><a class="title" href="/posts/219271.html" title="NAT">NAT</a><time datetime="2023-08-19T16:25:04.000Z" title="Created 2023-08-20 00:25:04">2023-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/bcafbad3.html" title="VPN"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf10.png" onerror="this.onerror=null;this.src='/img/kafka&amp;silverWolf.png'" alt="VPN"/></a><div class="content"><a class="title" href="/posts/bcafbad3.html" title="VPN">VPN</a><time datetime="2023-08-19T16:24:49.000Z" title="Created 2023-08-20 00:24:49">2023-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/52a6424c.html" title="DDoS"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf12.png" onerror="this.onerror=null;this.src='/img/kafka&amp;silverWolf.png'" alt="DDoS"/></a><div class="content"><a class="title" href="/posts/52a6424c.html" title="DDoS">DDoS</a><time datetime="2023-08-19T16:24:30.000Z" title="Created 2023-08-20 00:24:30">2023-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/88ec0c1d.html" title="CDN"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf7.png" onerror="this.onerror=null;this.src='/img/kafka&amp;silverWolf.png'" alt="CDN"/></a><div class="content"><a class="title" href="/posts/88ec0c1d.html" title="CDN">CDN</a><time datetime="2023-08-19T16:16:54.000Z" title="Created 2023-08-20 00:16:54">2023-08-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By SingKwan</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">簡</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-repository-pi.vercel.app/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-repository-pi.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.textContent = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="731839928" data-server="netease" data-type="playlist" data-order="list" data-fixed="true" data-mini="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div><script async src="//at.alicdn.com/t/c/font_4198821_ng3ies6un4.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = 'eb022a84991a4c2f9df94b773b770af0';
+  var gaud_map_key = '16adf35eb998599ec331a4003ed16b85';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.2.2" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站使用JsDelivr为静态资源提供CDN加速" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime.min.js"></script><script async src="/js/ali_font.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item swiper_container_card" style="height: auto;width: 100%"><div id="random"><div id="random-banner"><canvas id="peoplecanvas"></canvas></div><a id="random-hover" style="width:100%;height:auto;" href="javascript:toRandomPost()" rel="external nofollow noreferrer" one-link-mark="yes"><i class="fa fa-paper-plane" style="margin-left:10px"></i><div style="margin-left:10px">随便逛逛<i class="fa-solid fa-arrow-right" style="margin-left:10px"></i></div></a></div><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/73df7d67.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf13.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-20</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/73df7d67.html&quot;);" href="javascript:void(0);" alt="">RDMA</a><div class="blog-slider__text">RDMA远程直接内存访问学习</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/73df7d67.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/52a6424c.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf12.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-20</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/52a6424c.html&quot;);" href="javascript:void(0);" alt="">DDoS</a><div class="blog-slider__text">DDoS分布式拒绝服务攻击学习</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/52a6424c.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/bcafbad3.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf10.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-20</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/bcafbad3.html&quot;);" href="javascript:void(0);" alt="">VPN</a><div class="blog-slider__text">VPN虚拟专用网络学习</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/bcafbad3.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/219271.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf14.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-20</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/219271.html&quot;);" href="javascript:void(0);" alt="">NAT</a><div class="blog-slider__text">NAT网络地址转换学习</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/219271.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/88ec0c1d.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf7.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-20</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/88ec0c1d.html&quot;);" href="javascript:void(0);" alt="">CDN</a><div class="blog-slider__text">CDN内容分发网络学习</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/88ec0c1d.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/144a9ecb.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/silverWolf6.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-20</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/144a9ecb.html&quot;);" href="javascript:void(0);" alt="">DNS</a><div class="blog-slider__text">DNS域名解析过程</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/144a9ecb.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/53d0684b.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/kafka9.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-17</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/53d0684b.html&quot;);" href="javascript:void(0);" alt="">Linux</a><div class="blog-slider__text">Linux操作系统常用命令</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/53d0684b.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/f6491cfb.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/kafka12.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-17</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/f6491cfb.html&quot;);" href="javascript:void(0);" alt="">网络编程</a><div class="blog-slider__text">网络编程相关知识记录</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/f6491cfb.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/8049be4c.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/kafka11.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-13</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/8049be4c.html&quot;);" href="javascript:void(0);" alt="">springboot-1</a><div class="blog-slider__text">springboot2学习笔记-基础文档学习部分</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/8049be4c.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/d931075b.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/kafka10.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-13</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/d931075b.html&quot;);" href="javascript:void(0);" alt="">springboot-2</a><div class="blog-slider__text">springboot2学习笔记-项目实战部分</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/d931075b.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/29bd9dfc.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/kafka8.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-13</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/29bd9dfc.html&quot;);" href="javascript:void(0);" alt="">spring6</a><div class="blog-slider__text">spring6的再次学习</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/29bd9dfc.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/824ac3d0.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/kafka4.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-12</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/824ac3d0.html&quot;);" href="javascript:void(0);" alt="">SSM</a><div class="blog-slider__text">SSM的学习笔记</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/824ac3d0.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/c83102ca.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/kafka6.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-06</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/c83102ca.html&quot;);" href="javascript:void(0);" alt="">java-web</a><div class="blog-slider__text">java web的学习历程</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/c83102ca.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/8fe47ff4.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/SingKwanNGU/imageRepository/image/kafka15.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-08-12</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/8fe47ff4.html&quot;);" href="javascript:void(0);" alt="">JDBC</a><div class="blog-slider__text">JDBC入门</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/8fe47ff4.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/js/swiper.min.js"></script><script defer data-pjax src="https://cdn.cbd.int/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper_init.js"></script><script data-pjax src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/gsap/3.9.1/gsap.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/people.min.js"></script><script async src="/anzhiyu/random.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/kesysoban.model.json"},"display":{"position":"left","width":200,"height":300,"hOffset":-50,"vOffset":10},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
